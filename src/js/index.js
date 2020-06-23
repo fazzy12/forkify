@@ -1,4 +1,4 @@
 // Global app controller
-import x from './inx';
-
-console.log(`changed ${x} again`);
+import num from './inx';
+const x = 23;
+console.log(`changed ${num} again and a new variable ${x}`);
