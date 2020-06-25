@@ -1,5 +1,8 @@
 // Global app controller
 import Search from './modules/search';
+import * as searchview from './views/searchViews';
+import {element} from './views/base';
+
 
 /**
  * -search object
@@ -9,25 +12,32 @@ import Search from './modules/search';
  */
 const state = {};
 
-const controlSearch = async () =>{
+const controlSearch = async () => {
     //get the query from the view
-    const query = 'piza' //todo
+    const query = searchview.getInput(); 
 
     if (query){
         //new search object and add it to state
         state.search = new Search(query);
 
+        //prepare UI for results
+        searchview.clearInput();
+        searchview.clearResult();
+
+
         //show loading spinner
 
         //serach for recipe
         await state.search.getResults();
+        
 
        // render results on UI
+       searchview.renderResults(state.search.result);
     
     }
 }
 
-document.querySelector('.search').addEventListener('submit', e => {
+element.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     controlSearch();
 });
