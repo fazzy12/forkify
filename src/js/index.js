@@ -1,7 +1,7 @@
 // Global app controller
 import Search from './modules/search';
 import * as searchview from './views/searchViews';
-import {element} from './views/base';
+import {element, renderLoader, clearLoader} from './views/base';
 
 
 /**
@@ -23,7 +23,8 @@ const controlSearch = async () => {
         //prepare UI for results
         searchview.clearInput();
         searchview.clearResult();
-
+        renderLoader(element.searchRes);
+        
 
         //show loading spinner
 
@@ -32,6 +33,7 @@ const controlSearch = async () => {
         
 
        // render results on UI
+       clearLoader();
        searchview.renderResults(state.search.result);
     
     }
