@@ -44,4 +44,13 @@ element.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
+element.searchResPages.addEventListener('click', e => {
+    const btn = e.target.closest('.btn-inline');
+    if(btn){
+        const gotoPage = parseInt(btn.dataset.goto, 10);
+        searchview.clearResult();
+        searchview.renderResults(state.search.result, gotoPage);
+    }
+});
+
 

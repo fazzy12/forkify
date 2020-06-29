@@ -4,6 +4,7 @@ export const getInput = () =>  element.searchInput.value;
 
 export const clearResult = () => {
     element.searchResultList.innerHTML = "";
+    element.searchResPages.innerHTML = "";
 }
 
 export const clearInput = () => {
@@ -46,17 +47,17 @@ const renderRecipe = recipe =>{
 const createButton = (page, type) => `
 
     <button class="btn-inline results__btn--${type}" data-goto=${type === 'prev'? page -1 : page + 1}>
-    <svg class="search__icon">
-        <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left': 'right'}"></use>
-    </svg>
-    <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <svg class="search__icon">
+            <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left': 'right'}"></use>
+        </svg>
     </button>
 
     
 `;
 
 const renderButtons = (page, numResult, resPerPage) => {
-    const pages = math.ceil(numResult / resPerPage);
+    const pages = Math.ceil(numResult / resPerPage);
     let button;
     if (page === 1 && pages > 1){
         //only button to go to next page
@@ -66,7 +67,7 @@ const renderButtons = (page, numResult, resPerPage) => {
         button = `
             ${createButton(page, 'prev')}
             ${createButton(page, 'next')}
-        `
+        `;
     }else if (page === pages && pages > 1){
         //only button to go to prev page
         button = createButton(page, 'prev');
