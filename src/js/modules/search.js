@@ -18,4 +18,3 @@ export default class Search{
 
 
 
-//https://forkify-api.herokuapp.com/api/search
