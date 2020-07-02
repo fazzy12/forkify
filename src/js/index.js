@@ -2,7 +2,7 @@
 import Search from './modules/search';
 import Recipe from './modules/recipe'; 
 import * as searchview from './views/searchViews';
-import * as recipeview from './views/recipeviews';
+import * as recipeview from './views/recipeview';
 import {element, renderLoader, clearLoader} from './views/base';
 
 
