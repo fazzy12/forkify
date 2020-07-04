@@ -11,6 +11,10 @@ export const clearInput = () => {
     element.searchInput.value = "";
 }; 
 
+export const highlightSelected = id =>{
+    document.querySelector(`a[href=#${id}]`)
+};
+
 const limitRecipeTitle = ( title,  limit = 17) => {
     const newTitle = [];
     if (title.length > limit){
@@ -26,7 +30,7 @@ const limitRecipeTitle = ( title,  limit = 17) => {
     return title;
 }
 
-const renderRecipe = recipe =>{
+const renderRecipe = recipe => {
 
     const markup = `
         <li>
